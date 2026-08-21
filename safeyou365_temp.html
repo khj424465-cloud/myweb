@@ -3224,6 +3224,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     });
   };
 
+  window.addEventListener('safetyyou:prepare-risk-slider', prepareRiskSlider);
   window.addEventListener('hashchange', () => window.setTimeout(prepareRiskSlider, 0));
   prepareRiskSlider();
 })();
@@ -3300,6 +3301,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     });
   };
 
+  window.addEventListener('safetyyou:prepare-system-donut', prepareSystemDonut);
   window.addEventListener('hashchange', () => window.setTimeout(prepareSystemDonut, 0));
   prepareSystemDonut();
 })();
@@ -3376,6 +3378,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     });
   };
 
+  window.addEventListener('safetyyou:prepare-education-donut', prepareEducationDonut);
   window.addEventListener('hashchange', () => window.setTimeout(prepareEducationDonut, 0));
   prepareEducationDonut();
 })();
@@ -3477,6 +3480,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     });
   };
 
+  window.addEventListener('safetyyou:prepare-document-progress', prepareDocumentProgress);
   window.addEventListener('hashchange', () => window.setTimeout(prepareDocumentProgress, 0));
   prepareDocumentProgress();
 })();
@@ -3589,8 +3593,41 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     });
   };
 
+  window.addEventListener('safetyyou:prepare-diagnosis-radar', prepareDiagnosisRadar);
   window.addEventListener('hashchange', () => window.setTimeout(prepareDiagnosisRadar, 0));
   prepareDiagnosisRadar();
+})();
+</script>
+<script>
+/* 인덱스 핵심기능 5개 탭 전환 뒤 해당 화면의 애니메이션 실행 */
+(() => {
+  const animationEvents = [
+    'safetyyou:prepare-risk-slider',
+    'safetyyou:prepare-system-donut',
+    'safetyyou:prepare-education-donut',
+    'safetyyou:prepare-document-progress',
+    'safetyyou:prepare-diagnosis-radar'
+  ];
+
+  const prepareCoreFeatureAnimations = () => {
+    animationEvents.forEach((eventName) => window.dispatchEvent(new Event(eventName)));
+  };
+
+  const scheduleCoreFeatureAnimations = () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(prepareCoreFeatureAnimations);
+    });
+    window.setTimeout(prepareCoreFeatureAnimations, 120);
+  };
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target?.closest('.feature-tab-button')) return;
+    scheduleCoreFeatureAnimations();
+  });
+  window.addEventListener('load', scheduleCoreFeatureAnimations);
+  window.addEventListener('hashchange', scheduleCoreFeatureAnimations);
+  scheduleCoreFeatureAnimations();
 })();
 </script>
 <style>
@@ -4763,6 +4800,57 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
   updateAnnualScheduleItems();
 })();
 </script>
+<script>
+/* 기능안내 - TBM·안전보건교육 문구 */
+(() => {
+  const educationItems = [
+    '사업장 맞춤형 교육자료 AI 추천',
+    '모바일 앱 교육 이수·서명',
+    '연간 안전보건교육계획에 맞춘 근로자 교육 관리',
+    '외국인 근로자 맞춤형 다국어 교육 지원',
+    '미이수자 확인·외부교육관리',
+    '교육일지 자동생성',
+    '교육알림, 자료 생성, 전송 자동화'
+  ];
+
+  const updateEducationCopy = () => {
+    if (!window.location.hash.startsWith('#/features')) return;
+    const heading = Array.from(document.querySelectorAll('main h2, main h3, main h4')).find(
+      (element) => element.textContent.trim() === 'TBM·안전보건교육'
+    );
+    if (!heading) return;
+
+    let container = heading.parentElement;
+    let list = null;
+    for (let depth = 0; container && depth < 4; depth += 1) {
+      const candidate = container.querySelector('ul');
+      if (candidate?.children.length >= 4) {
+        list = candidate;
+        break;
+      }
+      container = container.parentElement;
+    }
+    if (!list || list.dataset.educationCopyUpdated === 'true') return;
+
+    const templateItem = list.lastElementChild;
+    if (!templateItem) return;
+    while (list.children.length < educationItems.length) {
+      list.appendChild(templateItem.cloneNode(true));
+    }
+    while (list.children.length > educationItems.length) {
+      list.lastElementChild.remove();
+    }
+    Array.from(list.children).forEach((item, index) => {
+      const textNode = Array.from(item.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+      if (textNode) textNode.nodeValue = educationItems[index];
+    });
+    list.dataset.educationCopyUpdated = 'true';
+  };
+
+  window.addEventListener('hashchange', () => window.setTimeout(updateEducationCopy, 0));
+  updateEducationCopy();
+})();
+</script>
 <style>
   .tbm-education-dashboard { padding:8px; background:#f1f3f5; border:1px solid #d8dee6; border-radius:18px; box-shadow:0 12px 28px rgba(31,41,55,.1); color:#1f2937; }
   .tbm-education-head { display:flex; align-items:center; gap:9px; padding:10px 12px; border-radius:11px; background:#20252d; color:#fff; }
@@ -4932,6 +5020,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
     template.innerHTML = diagnosisMarkup.trim();
     currentPreview.replaceWith(template.content.firstElementChild);
     section.dataset.diagnosisPreviewPlaced = 'true';
+    window.dispatchEvent(new Event('safetyyou:prepare-diagnosis-radar'));
   };
 
   window.addEventListener('hashchange', () => window.setTimeout(updateDiagnosisPreview, 0)); 
@@ -5010,6 +5099,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
 
     track.replaceWith(refreshedTrack);
     section.dataset.documentAnimationSynced = 'true';
+    window.dispatchEvent(new Event('safetyyou:prepare-document-progress'));
   };
 
   window.addEventListener('hashchange', () => window.setTimeout(syncFeatureDocumentAnimation, 0)); 
@@ -5039,6 +5129,7 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
 
     donut.replaceWith(refreshedDonut);
     section.dataset.educationAnimationSynced = 'true';
+    window.dispatchEvent(new Event('safetyyou:prepare-education-donut'));
   };
 
   window.addEventListener('hashchange', () => window.setTimeout(syncFeatureEducationAnimation, 0)); 
