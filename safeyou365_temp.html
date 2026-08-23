@@ -5483,5 +5483,38 @@ l.default.createElement("span",{className:"text-ink"},"\uD074\uB9AD \uBA87\uBC88
   .near-miss-bubble { max-width: 112px; font-size: 6.5px; }
 }
 </style>
+<script>
+/* 상단 사용안내 외부 링크 */
+(() => {
+  const guideUrl = 'https://ktkartisan.com/SAFEYOU/index.html';
+  const updateGuideLinks = () => {
+    document.querySelectorAll('header a').forEach((link) => {
+      if (link.textContent.trim() !== '사용안내') return;
+      link.href = guideUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+  };
+
+  const updateClickedGuideLink = (event) => {
+    const link = event.target.closest?.('header a');
+    if (!link || link.textContent.trim() !== '사용안내') return;
+    link.href = guideUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  };
+
+  window.addEventListener('hashchange', () => window.setTimeout(updateGuideLinks, 0));
+  window.addEventListener('load', updateGuideLinks);
+  document.addEventListener('pointerdown', updateClickedGuideLink, true);
+  document.addEventListener('click', (event) => {
+    updateClickedGuideLink(event);
+    window.setTimeout(updateGuideLinks, 0);
+  }, true);
+  window.requestAnimationFrame(() => window.requestAnimationFrame(updateGuideLinks));
+  window.setTimeout(updateGuideLinks, 100);
+  updateGuideLinks();
+})();
+</script>
 </body>
 </html>
