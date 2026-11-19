@@ -208,6 +208,9 @@ async function api(request,url,env) {
 }
 export default {
   async fetch(request,env) {
+    const headers = new Headers(request.headers);
+    headers.delete('oai-authenticated-user-id');
+    request = new Request(request, { headers });
     const url=new URL(request.url);
     try {
       if (url.pathname.startsWith('/api/')) return await api(request,url,env);
