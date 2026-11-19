@@ -1,0 +1,844 @@
+{
+  "basic": [
+    {
+      "id": "2:C6",
+      "label": "상호 (회사명)",
+      "kind": "text",
+      "required": true,
+      "placeholder": "예: 한빛제조"
+    },
+    {
+      "id": "2:C7",
+      "label": "대표자명",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "id": "2:C8",
+      "label": "사업자등록번호",
+      "kind": "business",
+      "required": true,
+      "placeholder": "숫자 10자리"
+    },
+    {
+      "id": "2:C9",
+      "label": "산재관리번호",
+      "kind": "text"
+    },
+    {
+      "id": "2:C10",
+      "label": "주소 (소재지)",
+      "kind": "text",
+      "required": true,
+      "wide": true
+    },
+    {
+      "id": "2:C11",
+      "label": "업태",
+      "kind": "text",
+      "required": true,
+      "placeholder": "예: 제조업"
+    },
+    {
+      "id": "2:C12",
+      "label": "업종 (종목)",
+      "kind": "text",
+      "required": true,
+      "placeholder": "예: 금속가공"
+    },
+    {
+      "id": "2:C13",
+      "label": "근로자 수 (대표 포함)",
+      "kind": "number",
+      "required": true,
+      "min": 1
+    },
+    {
+      "id": "2:C14",
+      "label": "퇴직연금 가입 여부",
+      "kind": "select",
+      "required": true,
+      "options": [
+        "확정급여형(DB)",
+        "확정기여형(DC)",
+        "개인형퇴직연금(IRP)",
+        "미가입 (일반 퇴직금제 유지)"
+      ]
+    }
+  ],
+  "contact": [
+    {
+      "id": "2:C19",
+      "label": "담당자 이름",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "id": "2:C20",
+      "label": "직책 / 부서",
+      "kind": "text"
+    },
+    {
+      "id": "2:C21",
+      "label": "담당자 휴대전화",
+      "kind": "tel",
+      "required": true,
+      "placeholder": "010-0000-0000"
+    },
+    {
+      "id": "2:C22",
+      "label": "담당자 이메일 (로그인 ID)",
+      "kind": "email",
+      "required": true
+    }
+  ],
+  "proof": [
+    {
+      "id": "2:C26",
+      "label": "무재해 증빙",
+      "kind": "select",
+      "options": [
+        "미해당",
+        "해당(증빙서류첨부필수)"
+      ]
+    },
+    {
+      "id": "2:C27",
+      "label": "4대보험 가입자명부",
+      "kind": "select",
+      "options": [
+        "첨부",
+        "미첨부"
+      ]
+    },
+    {
+      "id": "2:C28",
+      "label": "사업자등록증",
+      "kind": "select",
+      "options": [
+        "첨부",
+        "미첨부"
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "id": "3:C6",
+      "label": "빈도·강도법 (5×5 Matrix)",
+      "kind": "check",
+      "note": "가능성(1~5) × 중대성(1~5)을 곱한 점수로 위험성을 산출합니다. 기준 점수(12점) 초과 시 즉시 감소대책을 수립합니다."
+    },
+    {
+      "id": "3:C7",
+      "label": "3단계 수준 판단법 (상·중·하) (권장)",
+      "kind": "check",
+      "note": "위험성을 상/중/하 3단계로 간단히 판단합니다. 소규모 사업장에 적합하며,"
+    },
+    {
+      "id": "3:C8",
+      "label": "체크리스트법 (적정/부적정)",
+      "kind": "check",
+      "note": "각 위험요인을 ‘적정(O)’ 또는 ‘부적정(X)’으로만 판정하는 가장 간단한 방식입니다. 부적정 항목은 즉시 감소대책과 조치 담당자를 지정합니다."
+    }
+  ],
+  "levels": [
+    {
+      "id": "3:C13",
+      "label": "상 등급부터 개선 (기본값)",
+      "kind": "check"
+    },
+    {
+      "id": "3:C14",
+      "label": "중 등급 이상부터 개선",
+      "kind": "check"
+    }
+  ],
+  "same": {
+    "id": "4:F4",
+    "label": "대표자가 1단계 담당자와 동일합니까?",
+    "kind": "select",
+    "options": [
+      "예",
+      "아니오"
+    ]
+  },
+  "persons": [
+    {
+      "col": "C",
+      "label": "이름",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "col": "D",
+      "label": "이메일",
+      "kind": "email"
+    },
+    {
+      "col": "E",
+      "label": "연락처",
+      "kind": "tel"
+    },
+    {
+      "col": "F",
+      "label": "부서",
+      "kind": "text"
+    },
+    {
+      "col": "G",
+      "label": "역할",
+      "kind": "select",
+      "options": [
+        "근로자",
+        "관리감독자",
+        "관리자"
+      ]
+    },
+    {
+      "col": "H",
+      "label": "직군",
+      "kind": "select",
+      "options": [
+        "사무직 (반기 6시간)",
+        "비사무직 (반기 12시간)"
+      ]
+    },
+    {
+      "col": "I",
+      "label": "성별",
+      "kind": "select",
+      "options": [
+        "여성",
+        "남성"
+      ]
+    },
+    {
+      "col": "J",
+      "label": "사용 언어",
+      "kind": "select",
+      "options": [
+        "KO 한국",
+        "EN 영어",
+        "JP 일본",
+        "CN 중국",
+        "VN 베트남",
+        "UZ 우즈베키스탄",
+        "TH 태국",
+        "KH 캄보디아",
+        "NP 네팔",
+        "ES 스페인",
+        "FR 프랑스",
+        "MN 몽골",
+        "RU 러시아",
+        "MM 미얀마",
+        "LK 스리랑카",
+        "BD 방글라데시",
+        "ID 인도네시아",
+        "PK 파키스탄"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "5:C7",
+      "label": "지게차 등 하역차량 운반 작업",
+      "kind": "check"
+    },
+    {
+      "id": "5:C8",
+      "label": "밀폐공간 작업 (맨홀, 탱크 등)",
+      "kind": "check"
+    },
+    {
+      "id": "5:C9",
+      "label": "고소(높은 곳) 작업 (사다리, 비계 등)",
+      "kind": "check"
+    },
+    {
+      "id": "5:C10",
+      "label": "유해/위험 화학물질 취급",
+      "kind": "check"
+    },
+    {
+      "id": "5:C11",
+      "label": "중량물 인력 운반 및 취급",
+      "kind": "check"
+    },
+    {
+      "id": "5:C12",
+      "label": "기계·설비 정비/점검 및 LOTO",
+      "kind": "check"
+    },
+    {
+      "id": "5:C13",
+      "label": "고압 전기 취급 작업",
+      "kind": "check"
+    },
+    {
+      "id": "5:C14",
+      "label": "화재/폭발 위험 작업 (용접 등)",
+      "kind": "check"
+    }
+  ],
+  "equipment": [
+    {
+      "id": "5:F7",
+      "label": "지게차",
+      "kind": "check"
+    },
+    {
+      "id": "5:F8",
+      "label": "크레인 (천장/이동식)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F9",
+      "label": "리프트 (화물용)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F10",
+      "label": "고소작업대 (차량/시저스형)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F11",
+      "label": "프레스 기계",
+      "kind": "check"
+    },
+    {
+      "id": "5:F12",
+      "label": "전단기 / 절단기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F13",
+      "label": "롤러기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F14",
+      "label": "산업용 로봇",
+      "kind": "check"
+    },
+    {
+      "id": "5:F15",
+      "label": "컨베이어 (벨트/롤러)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F16",
+      "label": "사출성형기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F17",
+      "label": "목재가공기 (둥근톱/밴드쏘)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F18",
+      "label": "용접기 (아크/CO2)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F19",
+      "label": "연삭기 / 그라인더",
+      "kind": "check"
+    },
+    {
+      "id": "5:F20",
+      "label": "공작기계 (선반/밀링/CNC)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F21",
+      "label": "방전가공기 / 레이저가공기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F22",
+      "label": "굴착기 (백호)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F23",
+      "label": "이동식 크레인 (카고/트럭크레인)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F24",
+      "label": "호이스트 / 체인블록",
+      "kind": "check"
+    },
+    {
+      "id": "5:F25",
+      "label": "공기압축기 (컴프레서)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F26",
+      "label": "보일러 / 압력용기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F27",
+      "label": "건조기 / 열처리로",
+      "kind": "check"
+    },
+    {
+      "id": "5:F28",
+      "label": "원심분리기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F29",
+      "label": "혼합기 / 교반기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F30",
+      "label": "분쇄기 / 파쇄기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F31",
+      "label": "포장기 / 충전기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F32",
+      "label": "세척기 / 세정설비",
+      "kind": "check"
+    },
+    {
+      "id": "5:F33",
+      "label": "도장 부스 / 스프레이 장비",
+      "kind": "check"
+    },
+    {
+      "id": "5:F34",
+      "label": "국소배기장치 / 집진기",
+      "kind": "check"
+    },
+    {
+      "id": "5:F35",
+      "label": "동력전달장치 (벨트/체인/기어)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F36",
+      "label": "컷팅기 (워터젯/플라즈마)",
+      "kind": "check"
+    },
+    {
+      "id": "5:F37",
+      "label": "식품가공기계 (반죽기/절단기)",
+      "kind": "check"
+    }
+  ],
+  "equipmentExtra": [
+    {
+      "id": "5:E38",
+      "label": "기타 기계·설비 1",
+      "kind": "text"
+    },
+    {
+      "id": "5:E39",
+      "label": "기타 기계·설비 2",
+      "kind": "text"
+    },
+    {
+      "id": "5:E40",
+      "label": "기타 기계·설비 3",
+      "kind": "text"
+    }
+  ],
+  "chemicals": [
+    {
+      "id": "5:I7",
+      "label": "황산 / 염산 / 질산",
+      "kind": "check"
+    },
+    {
+      "id": "5:I8",
+      "label": "불산 (불화수소)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I9",
+      "label": "수산화나트륨 (가성소다)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I10",
+      "label": "톨루엔 / 크실렌 (유기용제)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I11",
+      "label": "아세톤 / MEK",
+      "kind": "check"
+    },
+    {
+      "id": "5:I12",
+      "label": "메탄올",
+      "kind": "check"
+    },
+    {
+      "id": "5:I13",
+      "label": "n-헥산",
+      "kind": "check"
+    },
+    {
+      "id": "5:I14",
+      "label": "트리클로로에틸렌",
+      "kind": "check"
+    },
+    {
+      "id": "5:I15",
+      "label": "벤젠",
+      "kind": "check"
+    },
+    {
+      "id": "5:I16",
+      "label": "포름알데히드",
+      "kind": "check"
+    },
+    {
+      "id": "5:I17",
+      "label": "용접흄 (산화철·망간)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I18",
+      "label": "목분진",
+      "kind": "check"
+    },
+    {
+      "id": "5:I19",
+      "label": "암모니아",
+      "kind": "check"
+    },
+    {
+      "id": "5:I20",
+      "label": "염소 (Cl2)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I21",
+      "label": "일산화탄소 (CO)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I22",
+      "label": "이산화탄소 / 드라이아이스",
+      "kind": "check"
+    },
+    {
+      "id": "5:I23",
+      "label": "황화수소 (H2S)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I24",
+      "label": "과산화수소",
+      "kind": "check"
+    },
+    {
+      "id": "5:I25",
+      "label": "차아염소산나트륨 (락스)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I26",
+      "label": "이소시아네이트 (MDI/TDI)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I27",
+      "label": "디클로로메탄 (염화메틸렌)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I28",
+      "label": "스티렌",
+      "kind": "check"
+    },
+    {
+      "id": "5:I29",
+      "label": "이황화탄소",
+      "kind": "check"
+    },
+    {
+      "id": "5:I30",
+      "label": "산화에틸렌",
+      "kind": "check"
+    },
+    {
+      "id": "5:I31",
+      "label": "아크릴로니트릴",
+      "kind": "check"
+    },
+    {
+      "id": "5:I32",
+      "label": "페놀",
+      "kind": "check"
+    },
+    {
+      "id": "5:I33",
+      "label": "에폭시 수지 / 경화제",
+      "kind": "check"
+    },
+    {
+      "id": "5:I34",
+      "label": "도료 / 시너 (유기용제)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I35",
+      "label": "결정형 유리규산 (석영/실리카)",
+      "kind": "check"
+    },
+    {
+      "id": "5:I36",
+      "label": "카드뮴 및 그 화합물",
+      "kind": "check"
+    },
+    {
+      "id": "5:I37",
+      "label": "납 및 그 화합물",
+      "kind": "check"
+    },
+    {
+      "id": "5:I38",
+      "label": "6가 크롬 화합물",
+      "kind": "check"
+    },
+    {
+      "id": "5:I39",
+      "label": "니켈 및 그 화합물",
+      "kind": "check"
+    },
+    {
+      "id": "5:I40",
+      "label": "망간 및 그 화합물",
+      "kind": "check"
+    },
+    {
+      "id": "5:I41",
+      "label": "시안화물 (시안화나트륨 등)",
+      "kind": "check"
+    }
+  ],
+  "chemicalExtra": [
+    {
+      "id": "5:H42",
+      "label": "기타 화학물질 1",
+      "kind": "text"
+    },
+    {
+      "id": "5:H43",
+      "label": "기타 화학물질 2",
+      "kind": "text"
+    },
+    {
+      "id": "5:H44",
+      "label": "기타 화학물질 3",
+      "kind": "text"
+    }
+  ],
+  "confirmation": {
+    "id": "5:I63",
+    "label": "위 안내를 확인했으며, 입력한 위험요인 정보가 실제 사업장 현황과 일치함을 확인합니다.",
+    "kind": "check"
+  },
+  "chemical": [
+    {
+      "col": "B",
+      "label": "제품명 (또는 MSDS명)",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "col": "E",
+      "label": "사용 용도 / 사용 공정",
+      "kind": "text"
+    },
+    {
+      "col": "H",
+      "label": "보관 장소 / 관리 부서",
+      "kind": "text"
+    },
+    {
+      "col": "I",
+      "label": "구매일",
+      "kind": "date"
+    }
+  ],
+  "process": [
+    {
+      "col": "C",
+      "label": "공정명",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "col": "D",
+      "label": "주요 작업 내용",
+      "kind": "text"
+    },
+    {
+      "col": "E",
+      "label": "작업 인원 (명)",
+      "kind": "number"
+    },
+    {
+      "col": "F",
+      "label": "공정 담당자 성명",
+      "kind": "person",
+      "required": true
+    },
+    {
+      "col": "G",
+      "label": "담당자 직책",
+      "kind": "text"
+    },
+    {
+      "col": "H",
+      "label": "담당자 연락처",
+      "kind": "tel"
+    },
+    {
+      "col": "I",
+      "label": "참여 근로자 1",
+      "kind": "person"
+    },
+    {
+      "col": "J",
+      "label": "참여 근로자 2",
+      "kind": "person"
+    },
+    {
+      "col": "K",
+      "label": "참여 근로자 3",
+      "kind": "person"
+    },
+    {
+      "col": "L",
+      "label": "사용 기계·설비",
+      "kind": "text"
+    },
+    {
+      "col": "M",
+      "label": "취급 화학물질",
+      "kind": "text"
+    },
+    {
+      "col": "N",
+      "label": "비고",
+      "kind": "text"
+    }
+  ],
+  "year": {
+    "id": "7:D5",
+    "label": "기준연도",
+    "kind": "number",
+    "min": 1900
+  },
+  "budgetMode": {
+    "id": "7:D6",
+    "label": "산정 방식",
+    "kind": "select",
+    "options": [
+      "항목별 직접 입력",
+      "총액 입력 (프로그램 자동산정)"
+    ],
+    "required": true
+  },
+  "budgetTotal": {
+    "id": "7:D9",
+    "label": "연간 안전보건 예산 총액 (원)",
+    "kind": "number",
+    "min": 0,
+    "required": true
+  },
+  "budgetKinds": [
+    "개인보호구",
+    "안전보건교육",
+    "안전시설·방호장치",
+    "스마트 안전장비",
+    "위험성평가 개선대책 이행",
+    "작업환경측정·건강진단",
+    "기계·설비 안전검사·정비",
+    "비상대응·소방",
+    "안전보건 위탁·컨설팅",
+    "기타"
+  ],
+  "budgetExamples": [
+    "안전모·안전화·보안경·방진/방독마스크·귀마개·안전대 등",
+    "근로자 정기교육, 채용 시·작업내용 변경 시·특별교육, 관리감독자 교육",
+    "안전난간, 방호덮개, 인터록, 비상정지장치, 추락방지망 등",
+    "지게차 충돌방지장치, 고소작업대 과상승방지장치 등 IoT·AI 안전장치",
+    "위험성평가 결과 감소대책(설비 개선·작업방법 개선) 이행 비용",
+    "작업환경측정, 특수·배치전·일반 건강진단",
+    "프레스·크레인·압력용기 등 안전검사, 정기 점검·정비",
+    "소화기·비상조명·구급용품, 비상대피 훈련",
+    "안전·보건관리 전문기관 위탁, 안전진단·컨설팅",
+    null
+  ],
+  "budget": [
+    {
+      "col": "E",
+      "label": "예산 금액 (원)",
+      "kind": "number"
+    },
+    {
+      "col": "F",
+      "label": "집행 예정 시기",
+      "kind": "text"
+    },
+    {
+      "col": "G",
+      "label": "재원",
+      "kind": "select",
+      "options": [
+        "자체예산",
+        "정부지원(공단 등)",
+        "자체+정부지원"
+      ]
+    },
+    {
+      "col": "H",
+      "label": "담당 부서",
+      "kind": "text"
+    },
+    {
+      "col": "I",
+      "label": "비고",
+      "kind": "text"
+    }
+  ],
+  "review": [
+    {
+      "id": "8:C23",
+      "label": "영업 담당자 (소속 총판/대리점)",
+      "kind": "text"
+    },
+    {
+      "id": "8:C24",
+      "label": "영업 담당자 성명 / 연락처",
+      "kind": "text"
+    },
+    {
+      "id": "8:C25",
+      "label": "사업장 확인자 성명 / 직책",
+      "kind": "text"
+    },
+    {
+      "id": "8:C26",
+      "label": "작성일",
+      "kind": "date"
+    }
+  ]
+}

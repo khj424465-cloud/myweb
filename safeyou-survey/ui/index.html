@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171717">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/app.css">
+  <title>사업장 기초조사 | 안전해YOU</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <button class="brand" data-action="list" aria-label="안전해YOU 조사서 목록"><span class="brand-mark" aria-hidden="true">✓</span><span>안전해<span class="brand-you">YOU</span></span></button>
+      <span class="top-divider"></span><span class="top-label">사업장 기초조사</span>
+      <div class="top-actions" hidden>
+        <button class="top-link" data-action="list">내 기초조사서 <span aria-hidden="true">↗</span></button>
+        <button class="top-link" data-action="logout">로그아웃</button>
+      </div>
+    </div>
+  </header>
+  <main id="app" class="shell" aria-busy="true"><div class="loading">조사서를 불러오는 중입니다.</div></main>
+  <div id="notice" class="toast" role="status" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
