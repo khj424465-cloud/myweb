@@ -1,0 +1,13 @@
+{
+  "name": "myweb",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-11-19",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "safeyou-survey",
+      "database_id": "d3a8e24e-0a66-4446-b054-5742c89fc6fd",
+      "migrations_dir": "drizzle"
+    }
+  ]
+}
